@@ -628,5 +628,74 @@
     }
   }
 
+  //
+  // FALILED_LOGINS QUERIES
+  //
+  
+  // Find all users, ordered last_name, first_name
+  function find_all_failed_login() {
+    global $db;
+    $sql = "SELECT * FROM failed_logins ";
+    $sql .= "ORDER BY username ASC;";
+    $failed_logins_result = db_query($db, $sql);
+    return $failed_logins_result;
+  }
 
+  // Find failed login using username
+  function find_failed_login($username=null) {
+    global $db;
+    $sql = "SELECT * FROM failed_logins ";
+    $sql .= "WHERE username='" . $username . "' ";
+    $sql .= "LIMIT 1;";
+    $failed_logins_result = db_query($db, $sql);
+    return $failed_logins_result;
+  }
+  
+  // Insert a failed login record
+  // Either returns true or false
+  function insert_failed_login($failed_login) {
+    global $db;
+    
+    $sql = "INSERT INTO failed_logins ";
+    $sql .= "(username, count, last_attempt) ";
+    $sql .= "VALUES (";
+    $sql .= "'" . $failed_login['username'] . "', ";
+    $sql .= "'" . $failed_login['count'] . "', ";
+    $sql .= "'" . $failed_login['last_attempt'] . "' ";
+    $sql .= ");";
+    // For INSERT statements, $result is just true/false
+    $result = db_query($db, $sql);
+    if($result) {
+      return true;
+    } else {
+      // The SQL INSERT statement failed.
+      // Just show the error, not the form
+      echo db_error($db);
+      db_close($db);
+      exit;
+    }
+  }
+  
+  // Edit failed login record
+  // Either returns true or an array of errors
+  function update_user($failed_login) {
+    global $db;
+
+    $sql = "UPDATE failed_logins SET ";
+    $sql .= "count='" . $failed_login['count'] . "', ";
+    $sql .= "last_attempt='" . $failed_login['last_attempt'] . "' ";
+    $sql .= "WHERE username='" . $failed_login['username'] . "' ";
+    $sql .= "LIMIT 1;";
+    // For update_user statements, $result is just true/false
+    $result = db_query($db, $sql);
+    if($result) {
+      return true;
+    } else {
+      // The SQL UPDATE statement failed.
+      // Just show the error, not the form
+      echo db_error($db);
+      db_close($db);
+      exit;
+    }
+  }
 ?>
