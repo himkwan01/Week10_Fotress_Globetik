@@ -22,8 +22,8 @@ The following **required** functionality is completed:
   * [x]  Stores the password in the database
 
 4\. Login page
-  * [ ]  Verify the correct password.
-  * [ ]  Do not create a User Enumeration vulnerability.
+  * [x]  Verify the correct password.
+  * [x]  Do not create a User Enumeration vulnerability.
 
 5\. If a user fails to log in:
   * [ ]  Record the failed login for the first 5 attempts.

@@ -525,7 +525,7 @@
       $errors[] = "Password must be a valid format.";
     }
     
-    if (is_blank($user['confirm_passowrd'])) {
+    if (is_blank($user['confirm_password'])) {
       $errors[] = "Confirm password cannot be blank.";
     }
     

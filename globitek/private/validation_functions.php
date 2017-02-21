@@ -59,7 +59,7 @@
    // check for valid password format
    // at least one uppercase character, lowercase character,digit, special chcaracter
    function has_valid_password_format($password) {
-     return preg_match('/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[^\w\s])$/', $password);
+     return preg_match('/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*(_|[^\w])).+$/', $password);
    }
    
 ?>
