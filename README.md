@@ -18,8 +18,8 @@ The following **required** functionality is completed:
   * [x]  Returns any errors related to other validations already on the user.
 
 3\. Saving a user
-  * [ ]  Encrypts the password
-  * [ ]  Stores the password in the database
+  * [x]  Encrypts the password
+  * [x]  Stores the password in the database
 
 4\. Login page
   * [ ]  Verify the correct password.
