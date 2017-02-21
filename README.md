@@ -26,16 +26,16 @@ The following **required** functionality is completed:
   * [x]  Do not create a User Enumeration vulnerability.
 
 5\. If a user fails to log in:
-  * [ ]  Record the failed login for the first 5 attempts.
-  * [ ]  Return a "too many failed logins" message after 5 attempts.
-  * [ ]  Future attempts will show the number of minutes remaining in the lockout.
-  * [ ]  After the lockout period, the failed logins count resets to 0.
+  * [x]  Record the failed login for the first 5 attempts.
+  * [x]  Return a "too many failed logins" message after 5 attempts.
+  * [x]  Future attempts will show the number of minutes remaining in the lockout.
+  * [x]  After the lockout period, the failed logins count resets to 0.
 
 6\. After any successful login:
-  * [ ]  Set the failed_logins.count for the username to 0.
+  * [x]  Set the failed_logins.count for the username to 0.
 
 7\. SQLi and XSS
-  * [ ]  Do not introduce any SQLI Injection and Cross-Site Scripting vulnerabilities.
+  * [x]  Do not introduce any SQLI Injection and Cross-Site Scripting vulnerabilities.
 
 The following advanced user stories are optional:
 

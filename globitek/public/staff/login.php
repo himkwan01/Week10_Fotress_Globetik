@@ -10,6 +10,7 @@ require_once('../../private/initialize.php');
 $errors = array();
 $username = '';
 $password = '';
+$failed_login = 0;
 
 if(is_post_request() && request_is_same_domain()) {
   ensure_csrf_token_valid();
@@ -18,14 +19,18 @@ if(is_post_request() && request_is_same_domain()) {
   if(isset($_POST['username'])) { $username = $_POST['username']; }
   if(isset($_POST['password'])) { $password = $_POST['password']; }
 
-  // Validations
-  if (is_blank($username)) {
-    $errors[] = "Username cannot be blank.";
+  if ($remaining = throttle_time($username)) {
+    $errors[] = "Too many failed logins for this username. You will need to wait ". ceil($remaining/60) . "minutes before attempting another login.";
+  } else {
+    // Validations
+    if (is_blank($username)) {
+      $errors[] = "Username cannot be blank.";
+    }
+    if (is_blank($password)) {
+      $errors[] = "Password cannot be blank.";
+    }
   }
-  if (is_blank($password)) {
-    $errors[] = "Password cannot be blank.";
-  }
-
+  
   // If there were no errors, submit data to database
   if (empty($errors)) {
 
@@ -36,16 +41,22 @@ if(is_post_request() && request_is_same_domain()) {
       if(password_verify($password, $user['hashed_password'])) {
         // Username found, password matches
         log_in_user($user);
+        reset_failed_login($use['username']);
         // Redirect to the staff menu after login
         redirect_to('index.php');
       } else {
+        $failed_login = record_failed_login($username);
         // Username found, but password does not match.
         $errors[] = "Log in was unsuccessful.";
       }
     } else {
+      $failed_login = record_failed_login($username);
       // No username found
-      $errors[] ="Log in was not successful.";
+      $errors[] = "Log in was not successful.";
     }
+  }
+  if ($failed_login == 5) {
+    $errors[] = "Too many failed logins for this username.";
   }
 }
 

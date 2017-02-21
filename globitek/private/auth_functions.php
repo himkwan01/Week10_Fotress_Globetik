@@ -71,6 +71,7 @@
   }
 
   // increase the counter in the failed_login database
+  // return the failed attempt counter
   function record_failed_login($username) {
     // The failure technically already happened, so
     // get the time ASAP.
@@ -91,7 +92,7 @@
       $failed_login['last_attempt'] = $sql_date;
       update_failed_login($failed_login);
     }
-    return true;
+    return $failed_login['count'];
   }
   
   function throttle_time($username) {  
@@ -114,12 +115,14 @@
     }
   }
   
+  // Get the data from the database in order to reset failed login counter
   function reset_failed_login($username) {
-    $failed_login= [
-      'username' => $username,
-      'count' => 0,
-      'last_attempt' => time()
-    ];
-    update_failed_login($failed_login);
+    $fl_result = find_failed_login($username);
+    $failed_login = db_fetch_assoc($fl_result);
+    // find failed login record
+    if(failed_login) {
+      $failed_login['count'] = 0;
+      update_failed_login($failed_login);
+    }
   }
 ?>
