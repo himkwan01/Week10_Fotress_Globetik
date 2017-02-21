@@ -1,6 +1,6 @@
 # Project 6 - Globitek Authentication and Login Throttling
 
-Time spent: **4** hours spent in total
+Time spent: **6** hours spent in total
 
 ## User Stories
 
@@ -69,7 +69,7 @@ The following advanced user stories are optional:
 
 Here's a walkthrough of implemented user stories:
 
-<img src='http://i.imgur.com/link/to/your/gif/file.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='http://i.imgur.com/EPErdTx.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 

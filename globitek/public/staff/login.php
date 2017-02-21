@@ -20,7 +20,7 @@ if(is_post_request() && request_is_same_domain()) {
   if(isset($_POST['password'])) { $password = $_POST['password']; }
 
   if ($remaining = throttle_time($username)) {
-    $errors[] = "Too many failed logins for this username. You will need to wait ". ceil($remaining/60) . "minutes before attempting another login.";
+    $errors[] = "Too many failed logins for this username. You will need to wait ". ceil($remaining/60) . " minutes before attempting another login.";
   } else {
     // Validations
     if (is_blank($username)) {

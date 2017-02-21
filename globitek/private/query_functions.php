@@ -645,7 +645,7 @@
   function find_failed_login($username=null) {
     global $db;
     $sql = "SELECT * FROM failed_logins ";
-    $sql .= "WHERE username='" . db_escape($username) . "' ";
+    $sql .= "WHERE username='" . db_escape($db, $username) . "' ";
     $sql .= "LIMIT 1;";
     $failed_logins_result = db_query($db, $sql);
     return $failed_logins_result;
@@ -659,7 +659,7 @@
     $sql = "INSERT INTO failed_logins ";
     $sql .= "(username, count, last_attempt) ";
     $sql .= "VALUES (";
-    $sql .= "'" . db_escape($failed_login['username']) . "', ";
+    $sql .= "'" . db_escape($db, $failed_login['username']) . "', ";
     $sql .= "'" . $failed_login['count'] . "', ";
     $sql .= "'" . $failed_login['last_attempt'] . "' ";
     $sql .= ");";
@@ -684,7 +684,7 @@
     $sql = "UPDATE failed_logins SET ";
     $sql .= "count='" . $failed_login['count'] . "', ";
     $sql .= "last_attempt='" . $failed_login['last_attempt'] . "' ";
-    $sql .= "WHERE username='" . db_escape($failed_login['username']) . "' ";
+    $sql .= "WHERE username='" . db_escape($db, $failed_login['username']) . "' ";
     $sql .= "LIMIT 1;";
     // For update_failed_login statements, $result is just true/false
     $result = db_query($db, $sql);
