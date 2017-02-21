@@ -516,6 +516,23 @@
     } elseif (!is_unique_username($user['username'], $user['id'])) {
       $errors[] = "Username not allowed. Try another.";
     }
+    
+    if (is_blank($user['password'])) {
+      $errors[] = "Password cannot be blank.";
+    } elseif (!has_length($user['password'], array('min' => 12))) {
+      $errors[] = "Password must be at least 12 characters.";
+    } else if (!has_valid_password_format($user['password'])) {
+      $errors[] = "Password must be a valid format.";
+    }
+    
+    if (is_blank($user['confirm_passowrd'])) {
+      $errors[] = "Confirm password cannot be blank.";
+    }
+    
+    if ($user['password'] !== $user['confirm_password']) {
+      $errors[] = "Password and confirm password do not match.";
+    }
+    
     return $errors;
   }
 
