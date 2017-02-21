@@ -7,8 +7,8 @@ Time spent: **X** hours spent in total
 The following **required** functionality is completed:
 
 1\. "staff/users/new.php" and "staff/users/edit.php"
-  * [ ]  Form with inputs for "Password" and "Confirm Password"
-  * [ ]  Strong password requirements text
+  * [x]  Form with inputs for "Password" and "Confirm Password"
+  * [x]  Strong password requirements text
 
 2\. Data validations
   * [ ]  Returns an error if password or confirm_password are blank.
@@ -79,7 +79,7 @@ Describe any challenges encountered while building the app.
 
 ## License
 
-    Copyright [yyyy] [name of copyright owner]
+    Copyright 2017 Tsz Him Kwan
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.

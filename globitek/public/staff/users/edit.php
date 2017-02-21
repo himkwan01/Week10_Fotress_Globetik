@@ -50,6 +50,10 @@ if(is_post_request() && request_is_same_domain()) {
     <input type="text" name="username" value="<?php echo h($user['username']); ?>" /><br />
     Email:<br />
     <input type="text" name="email" value="<?php echo h($user['email']); ?>" /><br />
+    Password:<br />
+    <input type="password" name="password" value="" /><br />
+    Confirm password:<br />
+    <input type="password" name="confirm_password" value="" /><br />
     <br />
     <input type="submit" name="submit" value="Update"  />
   </form>
