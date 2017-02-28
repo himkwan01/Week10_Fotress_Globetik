@@ -48,9 +48,9 @@ The following advanced user stories are optional:
 
 * Bonus Objective 3\.
   * [x]  Create a new user using cost 10.
-  * [ ]  Set bcrypt "cost" parameter to 11 (for both insert and update).
-  * [ ]  Try to login with the "cost 10" user.
-  * [ ]  Briefly describe why login still works even after the cost is changed:
+  * [x]  Set bcrypt "cost" parameter to 11 (for both insert and update).
+  * [x]  Try to login with the "cost 10" user.
+  * [x]  Briefly describe why login still works even after the cost is changed: Since the return value from password_hash function contains the cost, algorithm, and the salt, without passing the cost the password_verify function, it can still determine the cost based on the hashed_password. Therefore, the login will still work after the cost is changed. 
 
 * Bonus Objective 4\.
   * [x]  Add "Previous password" to "public/staff/users/edit.php"

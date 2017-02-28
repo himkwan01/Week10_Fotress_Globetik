@@ -559,7 +559,7 @@
     
     // encrypt the password
     $user['password'] = db_escape($db,$user['password']);
-    $hashed_password = password_hash($user['password'], PASSWORD_BCRYPT);
+    $hashed_password = password_hash($user['password'], PASSWORD_BCRYPT, ["cost" => 11]);
     $created_at = date("Y-m-d H:i:s");
     $sql = "INSERT INTO users ";
     $sql .= "(first_name, last_name, email, username, created_at, hashed_password) ";
@@ -598,7 +598,7 @@
     
     // encrypt the password if not blank
     $user['new_password'] = db_escape($db,$user['new_password']);
-    $hashed_password = (is_blank($user['new_password'])) ? '' : password_hash($user['new_password'], PASSWORD_BCRYPT);
+    $hashed_password = (is_blank($user['new_password'])) ? '' : password_hash($user['new_password'], PASSWORD_BCRYPT, ["cost" => 11]);
 
     $sql = "UPDATE users SET ";
     // if password not blank, then update
