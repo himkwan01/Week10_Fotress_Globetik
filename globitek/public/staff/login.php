@@ -52,7 +52,7 @@ if(is_post_request() && request_is_same_domain()) {
     } else {
       $failed_login = record_failed_login($username);
       // No username found
-      $errors[] = "Log in was not successful.";
+      $errors[] = "Log in was unsuccessful.";
     }
   }
   if ($failed_login == 5) {

@@ -1,6 +1,6 @@
 # Project 6 - Globitek Authentication and Login Throttling
 
-Time spent: **6** hours spent in total
+Time spent: **6.5** hours spent in total
 
 ## User Stories
 
@@ -40,11 +40,11 @@ The following **required** functionality is completed:
 The following advanced user stories are optional:
 
 * Bonus Objective 1\.
-  * [ ]  Identify the subtle Username Enumeration weakness. Include a short description of how the code could be modified to be more secure below:
+  * [x]  Identify the subtle Username Enumeration weakness. Include a short description of how the code could be modified to be more secure below: Even though the error messages do not tell the user if the incorrect field is username or password. The messages are slightly difference. For incorrect username, the error message is "Log in was unsuccessful.", while for incorrect password, the error message is "Log in was not successful." The user can put character 'a' as password until one see different error message. Then one can know if the username exists or not. The error messages for incorrect username or password should be the same. Change the error message for incorrect password to "Log in was unsuccessful."
 
 * Bonus Objective 2\.
-  * [ ]  User password validations only run when the password is not blank.
-  * [ ]  `update_user` only encrypts and updates the password when the password is not blank.
+  * [x]  User password validations only run when the password is not blank.
+  * [x]  `update_user` only encrypts and updates the password when the password is not blank.
 
 * Bonus Objective 3\.
   * [ ]  Create a new user using cost 10.

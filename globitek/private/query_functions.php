@@ -489,6 +489,7 @@
   }
 
   function validate_user($user, $errors=array()) {
+  
     if (is_blank($user['first_name'])) {
       $errors[] = "First name cannot be blank.";
     } elseif (!has_length($user['first_name'], array('min' => 2, 'max' => 255))) {
@@ -518,7 +519,7 @@
     }
     
     if (is_blank($user['password'])) {
-      $errors[] = "Password cannot be blank.";
+      if(!isset($user['submit'])) { $errors[] = "Password cannot be blank."; }
     } elseif (!has_length($user['password'], array('min' => 12))) {
       $errors[] = "Password must be at least 12 characters.";
     } else if (!has_valid_password_format($user['password'])) {
@@ -526,7 +527,7 @@
     }
     
     if (is_blank($user['confirm_password'])) {
-      $errors[] = "Confirm password cannot be blank.";
+      if(!isset($user['submit'])) { $errors[] = "Confirm password cannot be blank."; }
     }
     
     if ($user['password'] !== $user['confirm_password']) {
@@ -583,15 +584,20 @@
       return $errors;
     }
 
-    // encrypt the password
+    // encrypt the password if not blank
     $user['password'] = db_escape($db,$user['password']);
-    $hashed_password = password_hash($user['password'], PASSWORD_BCRYPT);
+    $hashed_password = (is_blank($user['password'])) ? '' : password_hash($user['password'], PASSWORD_BCRYPT);
+
     $sql = "UPDATE users SET ";
+    // if password not blank, then update
+    if(!is_blank($user['password'])) {
+      $sql .= "hashed_password='" . $hashed_password . "', ";
+    }
     $sql .= "first_name='" . db_escape($db, $user['first_name']) . "', ";
     $sql .= "last_name='" . db_escape($db, $user['last_name']) . "', ";
     $sql .= "email='" . db_escape($db, $user['email']) . "', ";
-    $sql .= "username='" . db_escape($db, $user['username']) . "' ,";
-    $sql .= "hashed_password='" . $hashed_password . "' ";
+    $sql .= "username='" . db_escape($db, $user['username']) . "' ";
+    
     $sql .= "WHERE id='" . db_escape($db, $user['id']) . "' ";
     $sql .= "LIMIT 1;";
     // For update_user statements, $result is just true/false
