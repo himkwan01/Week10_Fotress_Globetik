@@ -56,7 +56,7 @@ if(is_post_request() && request_is_same_domain()) {
     Email:<br />
     <input type="text" name="email" value="<?php echo h($user['email']); ?>" /><br />
     Previos Password:<br />
-    <input type="text" name="pre_password" value="" /><br />
+    <input type="password" name="pre_password" value="" /><br />
     New Password:<br />
     <input type="password" name="new_password" value="" /><br />
     Confirm password:<br />

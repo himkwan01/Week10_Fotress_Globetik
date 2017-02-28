@@ -497,7 +497,9 @@
         }
       }
     }
-    $user['password'] = $user['new_password'];
+    if(isset($user['new_password'])) {
+      $user['password'] = $user['new_password'];
+    }
     if (is_blank($user['first_name'])) {
       $errors[] = "First name cannot be blank.";
     } elseif (!has_length($user['first_name'], array('min' => 2, 'max' => 255))) {
