@@ -1,6 +1,6 @@
 # Project 6 - Globitek Authentication and Login Throttling
 
-Time spent: **6.5** hours spent in total
+Time spent: **7.5** hours spent in total
 
 ## User Stories
 
@@ -53,9 +53,9 @@ The following advanced user stories are optional:
   * [ ]  Briefly describe why login still works even after the cost is changed:
 
 * Bonus Objective 4\.
-  * [ ]  Add "Previous password" to "public/staff/users/edit.php"
-  * [ ]  Validate the previous password before allowing the password to be updated.
-  * [ ]  Require previous password only if new password is being updated (if also completing Bonus Objective 2).
+  * [x]  Add "Previous password" to "public/staff/users/edit.php"
+  * [x]  Validate the previous password before allowing the password to be updated.
+  * [x]  Require previous password only if new password is being updated (if also completing Bonus Objective 2).
 
 * Advanced Objective 1\.
   * [ ]  Implement `password_hash()` on your own as `my_password_hash()`.

@@ -489,7 +489,15 @@
   }
 
   function validate_user($user, $errors=array()) {
-  
+    if(isset($user['new_password'])) {
+      if(!is_blank($user['new_password'])) {
+        if(!password_verify($user['pre_password'], $user['hashed_password'])) {
+          $errors[] = "Previous password is not correct.";
+          return $errors;
+        }
+      }
+    }
+    $user['password'] = $user['new_password'];
     if (is_blank($user['first_name'])) {
       $errors[] = "First name cannot be blank.";
     } elseif (!has_length($user['first_name'], array('min' => 2, 'max' => 255))) {
@@ -519,7 +527,7 @@
     }
     
     if (is_blank($user['password'])) {
-      if(!isset($user['submit'])) { $errors[] = "Password cannot be blank."; }
+      if($user['submit'] !== "Update") { $errors[] = "Password cannot be blank."; } 
     } elseif (!has_length($user['password'], array('min' => 12))) {
       $errors[] = "Password must be at least 12 characters.";
     } else if (!has_valid_password_format($user['password'])) {
@@ -583,14 +591,16 @@
     if (!empty($errors)) {
       return $errors;
     }
-
+    
+    $user['new_password']; 
+    
     // encrypt the password if not blank
-    $user['password'] = db_escape($db,$user['password']);
-    $hashed_password = (is_blank($user['password'])) ? '' : password_hash($user['password'], PASSWORD_BCRYPT);
+    $user['new_password'] = db_escape($db,$user['new_password']);
+    $hashed_password = (is_blank($user['new_password'])) ? '' : password_hash($user['new_password'], PASSWORD_BCRYPT);
 
     $sql = "UPDATE users SET ";
     // if password not blank, then update
-    if(!is_blank($user['password'])) {
+    if(!is_blank($user['new_password'])) {
       $sql .= "hashed_password='" . $hashed_password . "', ";
     }
     $sql .= "first_name='" . db_escape($db, $user['first_name']) . "', ";
