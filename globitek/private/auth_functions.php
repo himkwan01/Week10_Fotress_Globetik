@@ -147,7 +147,7 @@
       $password .= chr(rand(0,25)+97);
     }
     for($i=0;$i<$num_size;$i++) {
-      $password .= chr(rand(0,9)+10);
+      $password .= chr(rand(0,9)+48);
     }
     $password = str_shuffle($password);
     return $password;

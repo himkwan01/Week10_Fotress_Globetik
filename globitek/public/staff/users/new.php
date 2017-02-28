@@ -53,7 +53,8 @@ if(is_post_request() && request_is_same_domain()) {
     Email:<br />
     <input type="text" name="email" value="<?php echo h($user['email']); ?>" /><br />
     Password:<br />
-    <input type="password" name="password" value="" /><br />
+    <input type="password" name="password" value="" />Strong password suggestion: <?php echo generate_strong_password(); ?>
+    <br />
     Confirm password:<br />
     <input type="password" name="confirm_password" value="" /><br />
     <br />

@@ -1,6 +1,6 @@
 # Project 6 - Globitek Authentication and Login Throttling
 
-Time spent: **7.5** hours spent in total
+Time spent: **8** hours spent in total
 
 ## User Stories
 
@@ -47,7 +47,7 @@ The following advanced user stories are optional:
   * [x]  `update_user` only encrypts and updates the password when the password is not blank.
 
 * Bonus Objective 3\.
-  * [ ]  Create a new user using cost 10.
+  * [x]  Create a new user using cost 10.
   * [ ]  Set bcrypt "cost" parameter to 11 (for both insert and update).
   * [ ]  Try to login with the "cost 10" user.
   * [ ]  Briefly describe why login still works even after the cost is changed:
@@ -63,7 +63,7 @@ The following advanced user stories are optional:
 
 * Advanced Objective 2\.
   * [x]  Write `generate_strong_password()`
-  * [ ]  Add a suggestion for a 12-character strong password to the new and edit user pages.
+  * [x]  Add a suggestion for a 12-character strong password to the new and edit user pages.
 
 ## Video Walkthrough
 
