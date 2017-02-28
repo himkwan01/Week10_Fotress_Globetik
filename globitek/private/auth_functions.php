@@ -125,7 +125,20 @@
       update_failed_login($failed_login);
     }
   }
+  // Implement `password_hash()` on your own as `my_password_hash()`
+  function my_password_hash($password, $cost=10) {
+    $hash_format = "$2y$" . $cost . "$";
+    return crypt($password, $hash_format);
+  }
   
+  // Implement `password_verify()` on your own as `my_password_verify()`
+  function my_password_verify($password, $hashed_password) {
+    
+    // get the original hashed_password cost
+    $cost = filter_var(substr($hashed_password, 4, 2), FILTER_VALIDATE_INT);
+    $password_hash = my_password_hash($password, $cost);
+    return ($password_hash === $hashed_password);
+  }
   // generate strong password
   function generate_strong_password() {
     $length = 12;

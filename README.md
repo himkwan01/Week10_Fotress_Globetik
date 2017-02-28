@@ -1,6 +1,6 @@
 # Project 6 - Globitek Authentication and Login Throttling
 
-Time spent: **8** hours spent in total
+Time spent: **8.5** hours spent in total
 
 ## User Stories
 
@@ -60,8 +60,8 @@ The following advanced user stories are optional:
   * [x]  Require previous password only if new password is being updated (if also completing Bonus Objective 2).
 
 * Advanced Objective 1\.
-  * [ ]  Implement `password_hash()` on your own as `my_password_hash()`.
-  * [ ]  Implement `password_verify()` on your own as `my_password_verify()`.
+  * [x]  Implement `password_hash()` on your own as `my_password_hash()`.
+  * [x]  Implement `password_verify()` on your own as `my_password_verify()`.
 
 * Advanced Objective 2\.
   * [x]  Write `generate_strong_password()`
