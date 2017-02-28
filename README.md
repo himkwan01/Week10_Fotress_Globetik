@@ -40,7 +40,8 @@ The following **required** functionality is completed:
 The following advanced user stories are optional:
 
 * Bonus Objective 1\.
-  * [x]  Identify the subtle Username Enumeration weakness. Include a short description of how the code could be modified to be more secure below: Even though the error messages do not tell the user if the incorrect field is username or password. The messages are slightly difference. For incorrect username, the error message is "Log in was unsuccessful.", while for incorrect password, the error message is "Log in was not successful." The user can put character 'a' as password until one see different error message. Then one can know if the username exists or not. The error messages for incorrect username or password should be the same. Change the error message for incorrect password to "Log in was unsuccessful."
+  * [x]  Identify the subtle Username Enumeration weakness. Include a short description of how the code could be modified to be more secure below: </br>
+  Even though the error messages do not tell the user if the incorrect field is username or password. The messages are slightly difference. For incorrect username, the error message is "Log in was unsuccessful.", while for incorrect password, the error message is "Log in was not successful." The user can put character 'a' as password until one see different error message. Then one can know if the username exists or not. The error messages for incorrect username or password should be the same. Change the error message for incorrect password to "Log in was unsuccessful."
 
 * Bonus Objective 2\.
   * [x]  User password validations only run when the password is not blank.
@@ -50,7 +51,8 @@ The following advanced user stories are optional:
   * [x]  Create a new user using cost 10.
   * [x]  Set bcrypt "cost" parameter to 11 (for both insert and update).
   * [x]  Try to login with the "cost 10" user.
-  * [x]  Briefly describe why login still works even after the cost is changed: Since the return value from password_hash function contains the cost, algorithm, and the salt, without passing the cost the password_verify function, it can still determine the cost based on the hashed_password. Therefore, the login will still work after the cost is changed. 
+  * [x]  Briefly describe why login still works even after the cost is changed: </br>
+  Since the return value from password_hash function contains the cost, algorithm, and the salt, without passing the cost the password_verify function, it can still determine the cost based on the hashed_password. Therefore, the login will still work after the cost is changed. 
 
 * Bonus Objective 4\.
   * [x]  Add "Previous password" to "public/staff/users/edit.php"
