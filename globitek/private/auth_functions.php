@@ -120,7 +120,7 @@
     $fl_result = find_failed_login($username);
     $failed_login = db_fetch_assoc($fl_result);
     // find failed login record
-    if(failed_login) {
+    if($failed_login) {
       $failed_login['count'] = 0;
       update_failed_login($failed_login);
     }

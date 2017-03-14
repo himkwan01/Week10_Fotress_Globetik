@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 21, 2017 at 09:37 PM
+-- Generation Time: Mar 14, 2017 at 10:46 AM
 -- Server version: 5.7.14
 -- PHP Version: 7.0.10
 
@@ -58,9 +58,12 @@ CREATE TABLE `failed_logins` (
 --
 
 INSERT INTO `failed_logins` (`id`, `username`, `count`, `last_attempt`) VALUES
-(1, 'jmonroe99', 0, '2017-02-21 21:10:26'),
+(1, 'jmonroe99', 5, '2017-03-14 10:44:57'),
 (2, '', 0, '2017-02-21 21:29:56'),
-(3, 'testuser', 5, '2017-02-21 21:34:21');
+(3, 'testuser', 2, '2017-03-14 10:45:36'),
+(4, 'adsf', 2, '2017-02-28 09:00:15'),
+(5, 'newuser', 1, '2017-03-14 10:45:23'),
+(6, 'usertest', 1, '2017-03-14 10:46:09');
 
 -- --------------------------------------------------------
 
@@ -346,7 +349,9 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `first_name`, `last_name`, `email`, `username`, `created_at`, `hashed_password`) VALUES
 (1, 'Jamesaa', 'Munroe', 'test@test.com', 'jmonroe99', NULL, '$2y$10$ctYHkwXAQdjnxrWJqjqbOeTc5sU4YXEAZHi.9MJ8YkNkTf25AZww6'),
-(3, 'First', 'Lastname', 'user@test.com', 'usertest', '2017-02-21 21:33:13', '$2y$10$1nbjXbaVbJ5t0gEL9b7Ya.r2ml1Il499Gxajz.5iZ5w6o4q4P9FJy');
+(3, 'Firstname', 'Lastname', 'user@test.com', 'usertest', '2017-02-21 21:33:13', '$2y$11$s2VWrXjEHJWiFhjlKW58UOrBGBXuAJ1M4NMIBALy19IOCQKFYc8Ya'),
+(4, 'new', 'user', 'new@user.com', 'newuser12', '2017-02-28 21:15:43', '$2y$10$pfkb/lHteEqxki.uGeD.IezzigGz2aV2XSRKzNGw/ZlOQ90Q3bDca'),
+(5, 'Test', 'Two', 'test@user.net', 'testuser222', '2017-03-14 10:44:08', '$2y$11$dBLsgDrxkfpaWuAAMNkZXuXmXepI4Z3RGU4yuNa1L978i6p17rCBK');
 
 --
 -- Indexes for dumped tables
@@ -410,7 +415,7 @@ ALTER TABLE `countries`
 -- AUTO_INCREMENT for table `failed_logins`
 --
 ALTER TABLE `failed_logins`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `salespeople`
 --
@@ -430,7 +435,7 @@ ALTER TABLE `territories`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
